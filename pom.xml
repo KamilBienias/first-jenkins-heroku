@@ -43,6 +43,19 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+<!-- poniższe ma się wykonać na polecenie heroku:deploy w Jenkinsfile-->
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<appName>first-jenkins-heroku</appName>
+					<processTypes>
+						<web>java -jar -Dserver.port=$PORT target/${project.build.finalName}.jar</web>
+					</processTypes>
+				</configuration>
+
+			</plugin>
 		</plugins>
 	</build>
 
